@@ -23,9 +23,9 @@ def main():
             f = open(path_file, 'r+', encoding='utf-8')
             text_raw = json.load(f)
             text_target = {
-                "dynasty": text_raw["dynasty"],
-                "author": text_raw["author"],
-                "intro": text_raw["intro"],
+                "dynasty": copy.deepcopy(text_raw["dynasty"]),
+                "author": copy.deepcopy(text_raw["author"]),
+                "intro": copy.deepcopy(text_raw["intro"]),
                 "items": []
             }
             f.close()
@@ -46,7 +46,7 @@ def main():
                 content = r3.split(content)
 
                 item_json = {
-                    "title": title,
+                    "title": copy.deepcopy(title),
                     "content": copy.deepcopy(content)
                 }
                 text_target["items"].append(item_json)
